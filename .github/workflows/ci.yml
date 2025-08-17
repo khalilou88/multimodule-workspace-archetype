@@ -35,10 +35,10 @@ jobs:
         run: mvn clean install
 
       - name: Prepare clean workspace
-        run: mkdir -p ~/workspace
+        run: mkdir -p /home/runner/workspace
 
       - name: Generate test project
-        working-directory: ~/workspace
+        working-directory: /home/runner/workspace
         run: |
           mvn archetype:generate \
             -DarchetypeGroupId=com.example.archetype \
@@ -50,5 +50,5 @@ jobs:
             -DinteractiveMode=false
 
       - name: Test generated project
-        working-directory: ~/workspace/test-project
+        working-directory: /home/runner/workspace/test-project
         run: mvn clean compile test package
