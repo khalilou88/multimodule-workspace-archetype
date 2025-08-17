@@ -12,7 +12,7 @@
     </parent>
 
     <artifactId>${rootArtifactId}-core</artifactId>
-    <n>${rootArtifactId}-core</n>
+    <name>${rootArtifactId}-core</name>
     <description>Core domain models and utilities</description>
 
     <dependencies>

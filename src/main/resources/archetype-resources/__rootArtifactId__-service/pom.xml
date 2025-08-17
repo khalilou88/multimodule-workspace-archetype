@@ -12,7 +12,7 @@
     </parent>
 
     <artifactId>${rootArtifactId}-service</artifactId>
-    <n>${rootArtifactId}-service</n>
+    <name>${rootArtifactId}-service</name>
     <description>Business logic and services</description>
 
     <dependencies>

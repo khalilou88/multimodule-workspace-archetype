@@ -12,7 +12,7 @@
     </parent>
 
     <artifactId>${rootArtifactId}-api</artifactId>
-    <n>${rootArtifactId}-api</n>
+    <name>${rootArtifactId}-api</name>
     <description>API contracts and DTOs</description>
 
     <dependencies>
