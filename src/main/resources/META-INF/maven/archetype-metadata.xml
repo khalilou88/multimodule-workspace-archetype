@@ -11,7 +11,7 @@
         <module id="${rootArtifactId}-core" dir="__rootArtifactId__-core" name="${rootArtifactId}-core">
             <fileSets>
                 <fileSet filtered="true" packaged="true" encoding="UTF-8">
-                    <directory>src/main/java</directory>
+                    <directory>src/main/java/${packageInPathFormat}</directory>
                     <includes>
                         <include>**/*.java</include>
                     </includes>
@@ -23,7 +23,7 @@
                     </includes>
                 </fileSet>
                 <fileSet filtered="true" packaged="true" encoding="UTF-8">
-                    <directory>src/test/java</directory>
+                    <directory>src/test/java/${packageInPathFormat}</directory>
                     <includes>
                         <include>**/*.java</include>
                     </includes>
@@ -35,7 +35,7 @@
         <module id="${rootArtifactId}-api" dir="__rootArtifactId__-api" name="${rootArtifactId}-api">
             <fileSets>
                 <fileSet filtered="true" packaged="true" encoding="UTF-8">
-                    <directory>src/main/java</directory>
+                    <directory>src/main/java/${packageInPathFormat}</directory>
                     <includes>
                         <include>**/*.java</include>
                     </includes>
@@ -47,7 +47,7 @@
                     </includes>
                 </fileSet>
                 <fileSet filtered="true" packaged="true" encoding="UTF-8">
-                    <directory>src/test/java</directory>
+                    <directory>src/test/java/${packageInPathFormat}</directory>
                     <includes>
                         <include>**/*.java</include>
                     </includes>
@@ -59,7 +59,7 @@
         <module id="${rootArtifactId}-service" dir="__rootArtifactId__-service" name="${rootArtifactId}-service">
             <fileSets>
                 <fileSet filtered="true" packaged="true" encoding="UTF-8">
-                    <directory>src/main/java</directory>
+                    <directory>src/main/java/${packageInPathFormat}</directory>
                     <includes>
                         <include>**/*.java</include>
                     </includes>
@@ -71,7 +71,7 @@
                     </includes>
                 </fileSet>
                 <fileSet filtered="true" packaged="true" encoding="UTF-8">
-                    <directory>src/test/java</directory>
+                    <directory>src/test/java/${packageInPathFormat}</directory>
                     <includes>
                         <include>**/*.java</include>
                     </includes>
@@ -83,7 +83,7 @@
         <module id="${rootArtifactId}-web" dir="__rootArtifactId__-web" name="${rootArtifactId}-web">
             <fileSets>
                 <fileSet filtered="true" packaged="true" encoding="UTF-8">
-                    <directory>src/main/java</directory>
+                    <directory>src/main/java/${packageInPathFormat}</directory>
                     <includes>
                         <include>**/*.java</include>
                     </includes>
@@ -95,7 +95,7 @@
                     </includes>
                 </fileSet>
                 <fileSet filtered="true" packaged="true" encoding="UTF-8">
-                    <directory>src/test/java</directory>
+                    <directory>src/test/java/${packageInPathFormat}</directory>
                     <includes>
                         <include>**/*.java</include>
                     </includes>
