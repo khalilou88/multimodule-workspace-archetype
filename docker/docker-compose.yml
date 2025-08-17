@@ -1,0 +1,15 @@
+# docker/docker-compose.yml
+version: '3.8'
+
+services:
+  archetype-generator:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.archetype
+    environment:
+      - GROUP_ID=com.mycompany
+      - ARTIFACT_ID=my-awesome-project
+      - VERSION=1.0.0-SNAPSHOT
+    volumes:
+      - ./generated:/workspace/generated
+    working_dir: /workspace/generated

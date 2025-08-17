@@ -1,0 +1,30 @@
+# Docker support
+# docker/Dockerfile.archetype
+FROM maven:3.9.4-eclipse-temurin-17-alpine
+
+LABEL description="Maven Multi-Module Archetype Generator"
+LABEL version="1.0.0"
+
+# Set working directory
+WORKDIR /workspace
+
+# Copy archetype source
+COPY . .
+
+# Install the archetype
+RUN mvn clean install
+
+# Create generation script
+RUN echo '#!/bin/sh' > /usr/local/bin/generate-project && \
+    echo 'mvn archetype:generate \' >> /usr/local/bin/generate-project && \
+    echo '  -DarchetypeGroupId=com.example.archetype \' >> /usr/local/bin/generate-project && \
+    echo '  -DarchetypeArtifactId=multimodule-workspace-archetype \' >> /usr/local/bin/generate-project && \
+    echo '  -DarchetypeVersion=1.0.0 \' >> /usr/local/bin/generate-project && \
+    echo '  -DgroupId=${GROUP_ID:-com.example} \' >> /usr/local/bin/generate-project && \
+    echo '  -DartifactId=${ARTIFACT_ID:-my-project} \' >> /usr/local/bin/generate-project && \
+    echo '  -Dversion=${VERSION:-1.0.0-SNAPSHOT} \' >> /usr/local/bin/generate-project && \
+    echo '  -DinteractiveMode=false' >> /usr/local/bin/generate-project && \
+    chmod +x /usr/local/bin/generate-project
+
+# Set entrypoint
+ENTRYPOINT ["/usr/local/bin/generate-project"]

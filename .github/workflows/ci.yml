@@ -1,0 +1,50 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test-archetype:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        java: [17, 21]
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - n: Set up JDK ${{ matrix.java }}
+        uses: actions/setup-java@v3
+        with:
+          java-version: ${{ matrix.java }}
+          distribution: 'temurin'
+
+      - n: Cache Maven packages
+        uses: actions/cache@v3
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2
+
+      - n: Install archetype
+        run: mvn clean install
+
+      - n: Generate test project
+        run: |
+          mvn archetype:generate \
+            -DarchetypeGroupId=com.example.archetype \
+            -DarchetypeArtifactId=multimodule-workspace-archetype \
+            -DarchetypeVersion=1.0.0 \
+            -DgroupId=com.test \
+            -DartifactId=test-project \
+            -Dversion=1.0.0-SNAPSHOT \
+            -DinteractiveMode=false
+
+      - n: Test generated project
+        run: |
+          cd test-project
+          mvn clean compile test package
